@@ -1,38 +1,60 @@
-Role Name
+ansible-cron
 =========
 
-A brief description of the role goes here.
+This role is useful for managing crontab jobs by ansible.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+crond package installed.
+
+- **action**: *Required argument to specify the method*:
+  - **add**: *Create a job.*
+  - **update**: *Update an existing job.*
+  - **remove**: *Remove an existing job.*
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+- cron_name: *Name for identifying the cronjob*
+- cron_user: *Job owner*
+- cron_job: *The command that should be executed*
+- minute: *Minutes definition for the crontab*
+- hour: *Hours definition for the crontab*
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+### site.yml
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- hosts: localhost
+  remote_user: root
+  become: yes
+
+  vars:
+    action: "add"
+    name: "test_cronjob"
+    job: "echo -n 'Hello from my cron!' | tee -a /tmp/test_cronjob.log > /dev/null 2>&1"
+    user: "root"
+    minute: "*/2"
+    hour: "*"
+
+  roles:
+    - ansible-cron
+```
+
+```yaml
+ansible-playbook -i inventory.ini localhost site.yml
+```
 
 License
 -------
 
-BSD
+ GPL-3.0 license
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Alex Mendes
+https://www.linkedin.com/in/mendesalex/
