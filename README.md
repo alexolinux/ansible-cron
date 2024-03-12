@@ -16,11 +16,11 @@ crond package installed.
 Role Variables
 --------------
 
-- cron_name: *Name for identifying the cronjob*
-- cron_user: *Job owner*
-- cron_job: *The command that should be executed*
-- minute: *Minutes definition for the crontab*
-- hour: *Hours definition for the crontab*
+- **cron_name**: *Name for identifying the cronjob*
+- **cron_user**: *Job owner*
+- **cron_job**: *The command that should be executed*
+- **minute**: *Minutes definition for the crontab*
+- **hour**: *Hours definition for the crontab*
 
 Example Playbook
 ----------------
