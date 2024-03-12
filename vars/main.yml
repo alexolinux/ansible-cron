@@ -1,3 +1,2 @@
 ---
-cron_name:
-cron_user:
+# Vars for ansible-cron

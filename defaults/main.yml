@@ -1,6 +1,7 @@
 ---
-cron_name:
-cron_job:
-cron_user:
+cron_name: sample
+cron_user: root
+cron_job_cmd: echo 'Hello from Ansible Role'
+cron_job_file: ""
 minute: "*"
 hour: "*"

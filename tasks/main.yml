@@ -1,8 +1,8 @@
 ---
 - name: Create a cron job
-  cron:
+  ansible.builtin.cron:
     name: "{{ cron_name }}"
-    job: "{{ cron_job }}"
+    job: "{{ cron_job_cmd }}"
     user: "{{ cron_user }}"
     minute: "{{ minute }}"
     hour: "{{ hour }}"
@@ -10,10 +10,23 @@
 
   tags: [ add_cron ]
 
-- name: Update a cron job
-  cron:
+- name: Create a cron file under /etc/cron.d
+  ansible.builtin.cron:
     name: "{{ cron_name }}"
-    job:  "{{ cron_job }}"
+    weekday: "2"
+    minute: "0"
+    hour: "12"
+    user: "{{ cron_user }}"
+    job: "{{ cron_job_cmd }}"
+    cron_file: "{{ cron_job_file }}"
+  when: action == "addfile"
+
+  tags: [ add_crond ]
+
+- name: Update a cron job
+  ansible.builtin.cron:
+    name: "{{ cron_name }}"
+    job:  "{{ cron_job_cmd }}"
     user: "{{ cron_user }}"
     minute: "{{ minute }}"
     hour: "{{ hour }}"
@@ -22,7 +35,7 @@
   tags: [ update_cron ]
 
 - name: Remove a cron job
-  cron:
+  ansible.builtin.cron:
     name: "{{ cron_name }}"
     user: "{{ cron_user }}"
     state:  absent
