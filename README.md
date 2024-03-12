@@ -34,9 +34,9 @@ Example Playbook
 
   vars:
     action: "add"
-    name: "test_cronjob"
-    job: "echo -n 'Hello from my cron!' | tee -a /tmp/test_cronjob.log > /dev/null 2>&1"
-    user: "root"
+    cron_name: "test_cronjob"
+    cron_job: "echo -n 'Hello from my cron!' | tee -a /tmp/test_cronjob.log > /dev/null 2>&1"
+    cron_user: "root"
     minute: "*/2"
     hour: "*"
 

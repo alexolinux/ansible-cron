@@ -4,8 +4,8 @@
     name: "{{ cron_name }}"
     job: "{{ cron_job }}"
     user: "{{ cron_user }}"
-    minute: "{{ }}"
-    hour: "{{ }}"
+    minute: "{{ minute }}"
+    hour: "{{ hour }}"
   when: action == "add"
 
   tags: [ add_cron ]
@@ -15,8 +15,8 @@
     name: "{{ cron_name }}"
     job:  "{{ cron_job }}"
     user: "{{ cron_user }}"
-    minute: "{{ }}"
-    hour: "{{ }}"
+    minute: "{{ minute }}"
+    hour: "{{ hour }}"
   when: action == "update"
 
   tags: [ update_cron ]
