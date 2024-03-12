@@ -45,7 +45,7 @@ Example Playbook
 ```
 
 ```yaml
-ansible-playbook -i inventory.ini localhost site.yml
+ansible-playbook -i inventory.ini site.yml
 ```
 
 License
