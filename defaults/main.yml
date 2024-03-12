@@ -1,2 +1,6 @@
 ---
-# defaults file for ansible-cron
+cron_name:
+cron_job:
+cron_user:
+minute: "*"
+hour: "*"

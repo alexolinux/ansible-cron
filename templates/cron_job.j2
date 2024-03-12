@@ -1,0 +1,7 @@
+# cron_job.j2
+
+{% if cron_operation == "add" %}
+{{ minute }} {{ hour }} * * * {{ user }} {{ command }}
+{% elif cron_operation == "update" %}
+{{ minute }} {{ hour }} * * * {{ user }} {{ updated_command }}
+{% endif %}

@@ -1,5 +1,14 @@
 ---
 - hosts: localhost
   remote_user: root
+  become: yes
+  
+  vars:
+    action: "add"
+    name: "test_cronjob"
+    job: "echo -n 'Hello from my cron!' | tee -a /tmp/test_cronjob.log > /dev/null 2>&1"
+    user: "root"
+    minute: "*/2"
+    hour: "*"
   roles:
     - ansible-cron

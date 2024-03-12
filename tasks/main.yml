@@ -1,2 +1,31 @@
 ---
+- name: Create a cron job
+  cron:
+    name: "{{ cron_name }}"
+    job: "{{ cron_job }}"
+    user: "{{ cron_user }}"
+    minute: "{{ }}"
+    hour: "{{ }}"
+  when: action == "add"
 
+  tags: [ add_cron ]
+
+- name: Update a cron job
+  cron:
+    name: "{{ cron_name }}"
+    job:  "{{ cron_job }}"
+    user: "{{ cron_user }}"
+    minute: "{{ }}"
+    hour: "{{ }}"
+  when: action == "update"
+
+  tags: [ update_cron ]
+
+- name: Remove a cron job
+  cron:
+    name: "{{ cron_name }}"
+    user: "{{ cron_user }}"
+    state:  absent
+  when: action == "remove"
+
+  tags: [ remove_cron ]
