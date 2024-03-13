@@ -15,6 +15,7 @@ This role is useful for managing crontab jobs by ansible.
 # |  |  |  |  |
 # *  *  *  *  * user-name  command to be executed
 ```
+This role is based on https://docs.ansible.com/ansible/2.9/modules/cron_module.html
 
 Requirements
 ------------
