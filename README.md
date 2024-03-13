@@ -23,9 +23,10 @@ crond package installed.
 
 - **action**: *Required argument to specify the method*:
   - **add**: *Create a job.*
-  - **addfile**: *Create a job by file (/etc/cron.d).*
+  - **addfile**: *Create a job file under `/etc/cron.d`.*
   - **update**: *Update an existing job.*
   - **remove**: *Remove an existing job.*
+  - **removefile**: *Remove an existing job file under `/etc/cron.d`.*
 
 Role Variables
 --------------
