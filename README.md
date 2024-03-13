@@ -41,6 +41,8 @@ Example Playbook
 
 site.yml
 
+**Add job**
+
 ```yaml
 - hosts: db
   remote_user: root
@@ -61,6 +63,22 @@ site.yml
     - name: Print variable values
       debug:
         msg: "Value of action: {{ action }}, name: {{ cron_name }}, job: {{ cron_job_cmd }}, user: {{ cron_user }}, minute: {{ minute }}, hour: {{ hour }}"
+```
+
+**Remove job**
+
+```yaml
+- hosts: db
+  remote_user: root
+  become: yes
+
+  vars:
+    action: remove
+    cron_name: "testcron"
+    cron_user: "root"
+
+  roles:
+    - ansible-cron
 ```
 
 ```yaml
