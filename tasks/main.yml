@@ -42,3 +42,12 @@
   when: action == "remove"
 
   tags: [ remove_cron ]
+
+- name: Remove a cron job file under /etc/cron.d
+  ansible.builtin.cron:
+    name: "{{ cron_name }}"
+    cron_file: "{{ cron_job_file }}"
+    state:  absent
+  when: action == "removefile"
+
+  tags: [ remove_cron_file ]
