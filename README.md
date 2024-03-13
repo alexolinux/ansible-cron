@@ -39,7 +39,14 @@ Role Variables
 Example Playbook
 ----------------
 
-site.yml
+`site.yml` execution:
+
+```yaml
+ansible-playbook -i inventory.ini site.yml
+```
+
+Usage Examples
+--------------
 
 **Add job**
 
@@ -81,9 +88,22 @@ site.yml
     - ansible-cron
 ```
 
+**Remove job file (/etc/cron.d)**
+
 ```yaml
-ansible-playbook -i inventory.ini site.yml
+- hosts: db
+  remote_user: root
+  become: yes
+
+  vars:
+    action: removefile
+    cron_name: "testcron"
+    cron_job_file: "testcron.sh"
+
+  roles:
+    - ansible-cron
 ```
+
 
 License
 -------
